@@ -107,7 +107,7 @@ class CIUnit_TestCase extends PHPUnit_Framework_TestCase
      * 'users' -> look for 'users_fixt.yml' fixture: 'fixtures/users_fixt.yml'
      * table is assumed to be named 'users'
      * dbfixt can have multiple strings as arguments, like so:
-     * $this->dbfix('users', 'items', 'prices');
+     * $this->dbfixt('users', 'items', 'prices');
      */
     protected function dbfixt(array $table_fixtures)
     {
@@ -124,6 +124,7 @@ class CIUnit_TestCase extends PHPUnit_Framework_TestCase
          */
         foreach($table_fixtures as $table => $fixt ) {
             $fixt_name = $fixt . '_fixt';
+            $table = is_int($table) ? $fixt : $table;
             
             if (!empty($this->$fixt_name)) {
                 CIUnit::$fixture->load($table, $this->$fixt_name);
