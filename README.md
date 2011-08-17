@@ -11,8 +11,8 @@
 	phpunit
 
 ### UnitTest
-	cd [CI2 Project Path]/application/tests
-	phpunit --no-configuration --bootstrap ../third_party/CIUnit/bootstrap_phpunit.php [Directory or PHP file path]
+	cd [CI2 Project Path]/tests
+	phpunit --no-configuration --bootstrap ../application/third_party/CIUnit/bootstrap_phpunit.php [Directory or PHP file path]
 
 ## Eclipse Settings
 * [External Tools](http://fukata.org/2011/06/19/codeigniter2-tips-ciunit-for-ci2-on-eclipse/)
