@@ -3,10 +3,11 @@
 
 ## Installation
 	cp -R CIUnit-for-CI2/application [CI2 Project Path]/
+	cp -R CIUnit-for-CI2/tests [CI2 Project Path]/
 
 ## Run Tests
 ### AllTests
-	cd [CI2 Project Path]/application/tests
+	cd [CI2 Project Path]/tests
 	phpunit
 
 ### UnitTest
