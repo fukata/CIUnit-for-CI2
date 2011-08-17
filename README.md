@@ -5,6 +5,16 @@
 	cp -R CIUnit-for-CI2/application [CI2 Project Path]/
 	cp -R CIUnit-for-CI2/tests [CI2 Project Path]/
 
+## Change Database Config
+	vi [CI2 Project Path]/application/config/database.php
+
+	$active_group = 'default';
+	+ if (defined('CIUnit_Version')) {
+	+     $active_group .= '_test';
+	+ }
+	$active_record = TRUE;
+
+
 ## Run Tests
 ### AllTests
 	cd [CI2 Project Path]/tests
