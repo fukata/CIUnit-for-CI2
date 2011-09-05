@@ -1,0 +1,38 @@
+--- CodeIgniter_2.0.3/application/config/database.php	2011-08-20 20:59:14.000000000 +0900
++++ application/config/database.php	2011-09-05 14:04:52.375136218 +0900
+@@ -45,6 +45,9 @@
+ */
+ 
+ $active_group = 'default';
++if (defined('CIUnit_Version')) {
++    $active_group .= '_test';
++}
+ $active_record = TRUE;
+ 
+ $db['default']['hostname'] = 'localhost';
+@@ -63,6 +66,23 @@
+ $db['default']['autoinit'] = TRUE;
+ $db['default']['stricton'] = FALSE;
+ 
++# for CIUnit
++$db['default_test']['hostname'] = 'localhost';
++$db['default_test']['username'] = '';
++$db['default_test']['password'] = '';
++$db['default_test']['database'] = '';
++$db['default_test']['dbdriver'] = 'mysql';
++$db['default_test']['dbprefix'] = '';
++$db['default_test']['pconnect'] = TRUE;
++$db['default_test']['db_debug'] = TRUE;
++$db['default_test']['cache_on'] = FALSE;
++$db['default_test']['cachedir'] = '';
++$db['default_test']['char_set'] = 'utf8';
++$db['default_test']['dbcollat'] = 'utf8_general_ci';
++$db['default_test']['swap_pre'] = '';
++$db['default_test']['autoinit'] = TRUE;
++$db['default_test']['stricton'] = FALSE;
++
+ 
+ /* End of file database.php */
+-/* Location: ./application/config/database.php */
+\ No newline at end of file
++/* Location: ./application/config/database.php */
