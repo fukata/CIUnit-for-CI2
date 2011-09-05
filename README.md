@@ -5,10 +5,10 @@
 ### Use install.sh
 	./tools/install.sh [CI2 Project Path]
 ### Manual
+1. Copy CIUnit Files
 	cp -R CIUnit-for-CI2/application [CI2 Project Path]/
 	cp -R CIUnit-for-CI2/tests [CI2 Project Path]/
-
-## Change Database Config
+2. Change Database Config
 	vi [CI2 Project Path]/application/config/database.php
 
 	$active_group = 'default';
