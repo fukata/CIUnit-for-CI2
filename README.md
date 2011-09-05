@@ -2,6 +2,9 @@
 [CIUnit](https://bitbucket.org/rafsoaken/ciunit) for CodeIgniter 2.x
 
 ## Installation
+### Use install.sh
+	./tools/install.sh [CI2 Project Path]
+### Manual
 	cp -R CIUnit-for-CI2/application [CI2 Project Path]/
 	cp -R CIUnit-for-CI2/tests [CI2 Project Path]/
 
