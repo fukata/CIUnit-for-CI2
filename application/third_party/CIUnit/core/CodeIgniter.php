@@ -80,7 +80,7 @@
     {
         get_config(array('subclass_prefix' => $assign_to_config['subclass_prefix']));
     }
-    
+
 /*
  * ------------------------------------------------------
  *  Set a liberal script execution time limit
@@ -97,9 +97,9 @@
  * ------------------------------------------------------
  */
     $BM =& load_class('Benchmark', 'core');
-    
+
     $GLOBALS['BM'] =& $BM;
-    
+
     $BM->mark('total_execution_time_start');
     $BM->mark('loading_time:_base_classes_start');
 
@@ -109,7 +109,7 @@
  * ------------------------------------------------------
  */
     $EXT =& load_class('Hooks', 'core');
-    
+
     $GLOBALS['EXT'] =& $EXT;
 
 /*
@@ -117,7 +117,7 @@
  *  Is there a "pre_system" hook?
  * ------------------------------------------------------
  */
-    $EXT->_call_hook('pre_system');
+    $EXT->call_hook('pre_system');
 
 /*
  * ------------------------------------------------------
@@ -125,7 +125,7 @@
  * ------------------------------------------------------
  */
     $CFG =& load_class('Config', 'core');
-    
+
     $GLOBALS['CFG'] =& $CFG;
 
     // Do we have any manually set config items in the index.php file?
@@ -146,7 +146,7 @@
  *
  */
     $UNI =& load_class('Utf8', 'core');
-    
+
     $GLOBALS['UNI'] =& $UNI;
 
 /*
@@ -164,9 +164,9 @@
  */
     $RTR =& load_class('Router', 'core');
     $GLOBALS['RTR'] =& $RTR;
-    
+
 //    $RTR->_set_routing();
-    
+
     // Set any routing overrides that may exist in the main index file
     if (isset($routing))
     {
@@ -188,7 +188,7 @@
  */
     // I am not going to worry about a cache, right?
     /*
-    if ($EXT->_call_hook('cache_override') === FALSE)
+    if ($EXT->call_hook('cache_override') === FALSE)
     {
         if ($OUT->_display_cache($CFG, $URI) == TRUE)
         {
@@ -225,14 +225,14 @@
     {
         return CI_Controller::get_instance();
     }
-    
+
     if (file_exists(APPPATH.'core/'.$CFG->config['subclass_prefix'].'Controller'.EXT))
     {
         require APPPATH.'core/'.$CFG->config['subclass_prefix'].'Controller'.EXT;
     }
-    
+
     if (defined('CIUnit_Version') === false) {
-        
+
         // Load the local application controller
         // Note: The Router class automatically validates the controller path using the router->_validate_request().
         // If this include fails it means that the default controller in the Routes.php file is not resolving to something valid.
@@ -240,12 +240,12 @@
         {
             show_error('Unable to load your default controller. Please make sure the controller specified in your Routes.php file is valid.');
         }
-        
+
         include(APPPATH.'controllers/'.$RTR->fetch_directory().$RTR->fetch_class().EXT);
-        
+
         // Set a mark point for benchmarking
         $BM->mark('loading_time:_base_classes_end');
-        
+
         /*
          * ------------------------------------------------------
          *  Security check
@@ -271,7 +271,7 @@
          *  Is there a "pre_controller" hook?
          * ------------------------------------------------------
          */
-        $EXT->_call_hook('pre_controller');
+        $EXT->call_hook('pre_controller');
 
         /*
          * ------------------------------------------------------
@@ -290,7 +290,7 @@
          *  Is there a "post_controller_constructor" hook?
          * ------------------------------------------------------
          */
-        $EXT->_call_hook('post_controller_constructor');
+        $EXT->call_hook('post_controller_constructor');
 
         /*
          * ------------------------------------------------------
@@ -325,14 +325,14 @@
          *  Is there a "post_controller" hook?
          * ------------------------------------------------------
          */
-        $EXT->_call_hook('post_controller');
+        $EXT->call_hook('post_controller');
 
         /*
          * ------------------------------------------------------
          *  Send the final rendered output to the browser
          * ------------------------------------------------------
          */
-        if ($EXT->_call_hook('display_override') === FALSE)
+        if ($EXT->call_hook('display_override') === FALSE)
         {
             $OUT->_display();
         }
@@ -342,10 +342,10 @@
          *  Is there a "post_system" hook?
          * ------------------------------------------------------
          */
-        $EXT->_call_hook('post_system');
-        
+        $EXT->call_hook('post_system');
+
     }
-    
+
     /*
      * ------------------------------------------------------
      *  Close the DB connection if one exists
