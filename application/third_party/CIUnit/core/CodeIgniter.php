@@ -111,7 +111,22 @@
     $EXT =& load_class('Hooks', 'core');
 
     $GLOBALS['EXT'] =& $EXT;
+    
+/*
+ * ------------------------------------------------------
+ *  Verification call_hooks() method
+ *
+ *  In Codeigniter 2 is callable "_call_hook()"
+ *
+ *  In Codeigniter 3 is callable "call_hook()"
+ * ------------------------------------------------------
+ */
 
+    $call_hook_method = '_call_hook';
+
+    if (is_callable(array($EXT, 'call_hook'))){
+        $call_hook_method = 'call_hook';
+    }
 /*
  * ------------------------------------------------------
  *  Is there a "pre_system" hook?
